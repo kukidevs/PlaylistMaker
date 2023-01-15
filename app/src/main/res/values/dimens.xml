@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="button_text">21sp</dimen>
+    <dimen name="button_corner_radius">20dp</dimen>
+    <dimen name="button_icon_padding">4dp</dimen>
+    <dimen name="square_size">60dp</dimen>
+    <dimen name="margin_box">20dp</dimen>
+    <dimen name="settings_text_size"> 21sp</dimen>
+    <dimen name="icon_size_settings">25dp</dimen>
+    <dimen name="settings_icon_padding">10dp</dimen>
+
+</resources>

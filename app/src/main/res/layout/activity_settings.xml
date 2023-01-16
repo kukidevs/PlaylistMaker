@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="5dp"
+        android:padding="@dimen/spaced"
         android:layout_marginBottom="20dp">
 
         <Button
@@ -78,9 +78,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="end|center"
-            android:padding="5dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
+            android:padding="@dimen/spaced"
+            android:layout_marginTop="@dimen/spaced"
+            android:layout_marginBottom="@dimen/spaced"
             android:layout_marginEnd="@dimen/settings_icon_padding">
             <ImageView
                 android:layout_height="@dimen/icon_size_settings"
@@ -123,7 +123,6 @@
                 android:scaleX="1.1"
                 android:contentDescription="@string/share_app" />
         </LinearLayout>
-
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -142,9 +141,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="end|center"
-            android:padding="5dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
+            android:padding="@dimen/spaced"
+            android:layout_marginTop="@dimen/spaced"
+            android:layout_marginBottom="@dimen/spaced"
             android:layout_marginEnd="@dimen/settings_icon_padding">
             <ImageView
                 android:layout_height="@dimen/icon_size_settings"

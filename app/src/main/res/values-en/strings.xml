@@ -8,4 +8,5 @@
     <string name="share_app">Share app</string>
     <string name="message_support">Message support</string>
     <string name="user_agreement">User agreement</string>
+    <string name="search_hint">Search</string>
 </resources>

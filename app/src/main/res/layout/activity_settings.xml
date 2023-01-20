@@ -4,12 +4,13 @@
     android:layout_height="match_parent"
     android:layout_width="match_parent"
     android:orientation="vertical"
-    android:background="@color/white">
+    android:background="?attr/colorSecondary"
+    >
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="@dimen/spaced"
+        android:padding="5dp"
         android:layout_marginBottom="20dp">
 
         <Button
@@ -19,15 +20,16 @@
             app:icon="@drawable/arrow_back"
             app:iconGravity="textStart"
             app:iconPadding="@dimen/button_icon_padding"
-            app:iconTint="@color/black"
+            app:iconTint="?attr/colorPrimaryVariant"
             android:backgroundTint="@color/white"
             app:cornerRadius="0dp"
-            style="?android:attr/borderlessButtonStyle"/>
+            style="?android:attr/borderlessButtonStyle"
+           />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="@string/settings_button"
-            android:textColor="@color/black"
+            android:textColor="?attr/colorPrimaryVariant"
             android:textSize="24sp"
             android:textStyle="bold"
             android:gravity="center_vertical"/>
@@ -37,12 +39,8 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/SettingsTextLine"
         android:text="@string/dark_mode"
-        android:textSize="@dimen/settings_text_size"
-        android:layout_margin="@dimen/margin_box"
-        android:textColor="@color/black"
         />
         <LinearLayout
             android:layout_width="match_parent"
@@ -50,109 +48,67 @@
             android:orientation="horizontal"
             android:gravity="end"
             >
-        <Switch
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:scaleX="1.2"
-            android:scaleY="1.2"
-            android:layout_marginTop="@dimen/margin_box"
-            android:layout_marginBottom="@dimen/margin_box"
-            android:layout_marginEnd="@dimen/settings_icon_padding"
-            tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_box"
+                android:layout_marginEnd="@dimen/settings_icon_padding"
+                android:layout_marginBottom="@dimen/margin_box"
+                android:scaleX="1.2"
+                android:scaleY="1.2"
+                tools:ignore="UseSwitchCompatOrMaterialXml"
+                android:theme="@style/SwitchCompatTheme"
+                />
         </LinearLayout>
     </LinearLayout>
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        >
+        style="@style/SettingsLineWrapper"
+        android:id="@+id/share_app_line">
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/SettingsTextLine"
             android:text="@string/share_app"
-            android:textSize="@dimen/settings_text_size"
-            android:layout_margin="@dimen/margin_box"
-            android:textColor="@color/black"
             />
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="end|center"
-            android:padding="@dimen/spaced"
-            android:layout_marginTop="@dimen/spaced"
-            android:layout_marginBottom="@dimen/spaced"
-            android:layout_marginEnd="@dimen/settings_icon_padding">
+            style="@style/SettingsImageWrapper">
             <ImageView
-                android:layout_height="@dimen/icon_size_settings"
-                android:layout_width="@dimen/icon_size_settings"
+                style="@style/SettingsImageLine"
                 android:src="@drawable/share"
-                android:layout_marginEnd="@dimen/settings_icon_padding"
-                android:scaleY="1.1"
-                android:scaleX="1.1"
-                android:contentDescription="@string/share_app" />
+                android:contentDescription="@string/share_app"/>
         </LinearLayout>
 
     </LinearLayout>
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        style="@style/SettingsLineWrapper"
+        android:id="@+id/message_support_line"
         >
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/SettingsTextLine"
             android:text="@string/message_support"
-            android:textSize="@dimen/settings_text_size"
-            android:layout_margin="@dimen/margin_box"
-            android:textColor="@color/black"
             />
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="end|center"
-            android:padding="5dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            android:layout_marginEnd="@dimen/settings_icon_padding">
+            style="@style/SettingsImageWrapper">
             <ImageView
-                android:layout_height="@dimen/icon_size_settings"
-                android:layout_width="@dimen/icon_size_settings"
+                style="@style/SettingsImageLine"
                 android:src="@drawable/support"
-                android:layout_marginEnd="@dimen/settings_icon_padding"
-                android:scaleY="1.1"
-                android:scaleX="1.1"
-                android:contentDescription="@string/share_app" />
+                android:contentDescription="@string/message_support" />
         </LinearLayout>
+
     </LinearLayout>
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        style="@style/SettingsLineWrapper"
+        android:id="@+id/user_agreement_line">
         >
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/SettingsTextLine"
             android:text="@string/user_agreement"
-            android:textSize="@dimen/settings_text_size"
-            android:layout_margin="@dimen/margin_box"
-            android:textColor="@color/black"
             />
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="end|center"
-            android:padding="@dimen/spaced"
-            android:layout_marginTop="@dimen/spaced"
-            android:layout_marginBottom="@dimen/spaced"
-            android:layout_marginEnd="@dimen/settings_icon_padding">
+            style="@style/SettingsImageWrapper">
             <ImageView
-                android:layout_height="@dimen/icon_size_settings"
-                android:layout_width="@dimen/icon_size_settings"
+                style="@style/SettingsImageLine"
                 android:src="@drawable/arrow_forward"
-                android:layout_marginEnd="@dimen/settings_icon_padding"
-                android:scaleY="1.1"
-                android:scaleX="1.1"
-                android:contentDescription="@string/share_app" />
+                android:contentDescription="@string/user_agreement" />
         </LinearLayout>
 
     </LinearLayout>

@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SearchActivity"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="?attr/colorSecondary"
+    >
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".SearchActivity"
     android:orientation="vertical"
     android:padding="16dp">
     <LinearLayout
@@ -37,7 +42,8 @@
         android:layout_height="wrap_content"
         android:background="@drawable/rounded_search_field"
         tools:context=".SearchActivity"
-        android:padding="9dp">
+        android:padding="9dp"
+        android:layout_marginBottom="@dimen/icon_size_settings">
     <ImageView
         android:layout_width="14dp"
         android:layout_height="14dp"
@@ -49,8 +55,9 @@
         android:id="@+id/inputEditText"
         android:layout_width="0dp"
         android:layout_marginStart="9dp"
-        android:layout_height="wrap_content"
+        android:textCursorDrawable="@color/black"
         android:layout_weight="1"
+        android:layout_height="wrap_content"
         android:hint="@string/search_hint"
         android:maxLines="1"
         android:inputType="textNoSuggestions"
@@ -58,7 +65,8 @@
         android:textColor="@color/black"
         android:textColorHint="?attr/colorOnSecondary"
         android:fontFamily="@font/ys_display_regular"
-        android:textSize="16sp"/>
+        android:textSize="16sp"
+        />
     <ImageView
         android:layout_width="12dp"
         android:layout_height="12dp"
@@ -69,4 +77,10 @@
         android:layout_gravity="center_vertical"
         android:visibility="gone"/>
     </LinearLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+</LinearLayout>
 </LinearLayout>

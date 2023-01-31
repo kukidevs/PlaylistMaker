@@ -8,4 +8,7 @@
     <string name="share_app">Share app</string>
     <string name="message_support">Message support</string>
     <string name="user_agreement">User agreement</string>
+    <string name="search_hint">Search</string>
+    <string name="letter_subject">Message for the developer of Playlist Maker</string>
+    <string name="letter_text">Thanks to the developer for such a cool app!</string>
 </resources>

@@ -9,9 +9,4 @@
     <string name="message_support">Написать в поддержку</string>
     <string name="user_agreement">Пользовательское соглашение</string>
     <string name="search_hint">Поиск</string>
-    <string name="course_link" translatable="false">https://practicum.yandex.ru/profile/android-developer/</string>
-    <string name="offer_link" translatable="false">https://yandex.ru/legal/practicum_offer/</string>
-    <string name="letter_subject">Сообщение разработчику Playlist Maker</string>
-    <string name="letter_text">Спасибо разработчику за крутое приложение!</string>
-    <string name="developer_email" translatable="false">kukidevs@gmail.com</string>
 </resources>

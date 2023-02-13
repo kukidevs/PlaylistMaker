@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="IntentButtonMain" parent="Widget.MaterialComponents.Button.UnelevatedButton">
+    <style name="IntentButtonMain">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">0dp</item>
         <item name="android:backgroundTint">?attr/colorOnPrimary</item>
@@ -13,6 +13,7 @@
         <item name="iconPadding">@dimen/button_icon_padding</item>
         <item name="iconTint">@color/black</item>
         <item name="android:fontFamily">@font/ys_display_medium</item>
+        <item name="android:textFontWeight">500</item>
         <item name="android:foreground">?attr/selectableItemBackground</item>
     </style>
     <style name="SettingsTextLine">
@@ -30,7 +31,7 @@
         <item name="android:layout_marginEnd">@dimen/settings_icon_padding</item>
         <item name="android:scaleY">1.1</item>
         <item name="android:scaleX">1.1</item>
-        <item name="tint">?attr/colorOnPrimary</item>
+        <item name="tint">?attr/paddingBottomNoButtons</item>
     </style>
     <style name="SettingsImageWrapper">
         <item name="android:layout_width">match_parent</item>

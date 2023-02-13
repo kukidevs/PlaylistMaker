@@ -14,13 +14,12 @@ class SettingsActivity : AppCompatActivity() {
         setContentView(R.layout.activity_settings)
         val buttonBack = findViewById<Button>(R.id.settings_arrow_back)
         buttonBack.setOnClickListener {
-            val displayIntent = Intent(this, MainActivity::class.java)
-            startActivity(displayIntent)
+            finish()
         }
         val shareApp = findViewById<LinearLayout>(R.id.share_app_line)
         shareApp.setOnClickListener{
             val sendIntent: Intent = Intent(ACTION_SEND).apply {
-                putExtra(Intent.EXTRA_TEXT, "https://practicum.yandex.ru/profile/android-developer/")
+                putExtra(Intent.EXTRA_TEXT, getString(R.string.share_app_link))
                 type = "text/plain" }
             val shareIntent = Intent.createChooser(sendIntent, null)
             startActivity(shareIntent)
@@ -30,8 +29,8 @@ class SettingsActivity : AppCompatActivity() {
             val sendIntent: Intent = Intent(ACTION_SENDTO).apply {
                 data = Uri.parse("mailto:")
                 putExtra(EXTRA_EMAIL, arrayOf("kukidevs@gmail.com"))
-                putExtra(EXTRA_SUBJECT, "Сообщение разработчику Playlist Maker")
-                putExtra(EXTRA_TEXT, "Спасибо разработчику за крутое приложение!")
+                putExtra(EXTRA_SUBJECT, getString(R.string.support_mail_title))
+                putExtra(EXTRA_TEXT, R.string.support_mail_text)
                 }
                 startActivity(sendIntent)
         }

@@ -11,7 +11,6 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
@@ -127,6 +126,9 @@ class SearchActivity : AppCompatActivity() {
             @RequiresApi(Build.VERSION_CODES.M)
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 clearButton.visibility = clearButtonVisibility(s)
+                errorButton.visibility = View.GONE
+                errorText.visibility = View.GONE
+                errorImage.visibility=View.GONE
             }
 
             override fun afterTextChanged(s: Editable?) {

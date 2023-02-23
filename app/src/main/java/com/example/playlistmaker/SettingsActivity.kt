@@ -2,25 +2,41 @@ package com.example.playlistmaker
 
 import android.content.Intent
 import android.content.Intent.*
+import android.content.res.Configuration
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.LinearLayout
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.appcompat.widget.SwitchCompat
 
 class SettingsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
+
         val buttonBack = findViewById<Button>(R.id.settings_arrow_back)
+        val nightModeSwitch = findViewById<SwitchCompat>(R.id.nightModeSwitch)
+        when (this.resources?.configuration?.uiMode?.and(Configuration.UI_MODE_NIGHT_MASK)) {
+            Configuration.UI_MODE_NIGHT_YES -> {nightModeSwitch.isChecked = true}
+            Configuration.UI_MODE_NIGHT_NO -> {nightModeSwitch.isChecked = false}
+        }
         buttonBack.setOnClickListener {
-            val displayIntent = Intent(this, MainActivity::class.java)
-            startActivity(displayIntent)
+            finish()
+        }
+        nightModeSwitch?.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked){
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            } else{
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            }
         }
         val shareApp = findViewById<LinearLayout>(R.id.share_app_line)
         shareApp.setOnClickListener{
             val sendIntent: Intent = Intent(ACTION_SEND).apply {
-                putExtra(Intent.EXTRA_TEXT, "https://practicum.yandex.ru/profile/android-developer/")
+                putExtra(Intent.EXTRA_TEXT, getString(R.string.share_app_link))
                 type = "text/plain" }
             val shareIntent = Intent.createChooser(sendIntent, null)
             startActivity(shareIntent)
@@ -30,8 +46,8 @@ class SettingsActivity : AppCompatActivity() {
             val sendIntent: Intent = Intent(ACTION_SENDTO).apply {
                 data = Uri.parse("mailto:")
                 putExtra(EXTRA_EMAIL, arrayOf("kukidevs@gmail.com"))
-                putExtra(EXTRA_SUBJECT, "Сообщение разработчику Playlist Maker")
-                putExtra(EXTRA_TEXT, "Спасибо разработчику за крутое приложение!")
+                putExtra(EXTRA_SUBJECT, getString(R.string.support_mail_title))
+                putExtra(EXTRA_TEXT, R.string.support_mail_text)
                 }
                 startActivity(sendIntent)
         }

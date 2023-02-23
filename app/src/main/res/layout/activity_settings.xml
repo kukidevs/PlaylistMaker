@@ -58,6 +58,7 @@
                 android:scaleX="1.2"
                 android:scaleY="1.2"
                 tools:ignore="UseSwitchCompatOrMaterialXml"
+                android:id="@+id/nightModeSwitch"
                 android:theme="@style/SwitchCompatTheme"
                 />
         </LinearLayout>

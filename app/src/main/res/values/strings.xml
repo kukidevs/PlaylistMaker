@@ -9,4 +9,10 @@
     <string name="message_support">Написать в поддержку</string>
     <string name="user_agreement">Пользовательское соглашение</string>
     <string name="search_hint">Поиск</string>
+    <string name="share_app_link" translatable="false">https://practicum.yandex.ru/profile/android-developer/</string>
+    <string name="support_mail_title">Сообщение разработчику Playlist Maker</string>
+    <string name="support_mail_text">Спасибо разработчику за крутое приложение!</string>
+    <string name="no_internet">Проблемы со связью\n\nЗагрузка не удалась. Проверьте подключение к интернету</string>
+    <string name="nothing_found">Ничего не нашлось</string>
+    <string name="update_button">Обновить</string>
 </resources>

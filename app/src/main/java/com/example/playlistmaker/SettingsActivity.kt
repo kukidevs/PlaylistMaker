@@ -4,19 +4,16 @@ import android.content.Intent
 import android.content.Intent.*
 import android.content.res.Configuration
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.LinearLayout
-import android.widget.Toast
-import androidx.appcompat.app.AppCompatDelegate
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SwitchCompat
 
 class SettingsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
-
         val buttonBack = findViewById<Button>(R.id.settings_arrow_back)
         val nightModeSwitch = findViewById<SwitchCompat>(R.id.nightModeSwitch)
         when (this.resources?.configuration?.uiMode?.and(Configuration.UI_MODE_NIGHT_MASK)) {
@@ -26,12 +23,14 @@ class SettingsActivity : AppCompatActivity() {
         buttonBack.setOnClickListener {
             finish()
         }
-        nightModeSwitch?.setOnCheckedChangeListener { _, isChecked ->
-            if (isChecked){
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-            } else{
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-            }
+        nightModeSwitch.setOnCheckedChangeListener { compoundB, isOn ->
+            (applicationContext as App).switchTheme(isOn)
+//            if (isChecked){
+//                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+//            } else{
+//                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+//            }
+//        }
         }
         val shareApp = findViewById<LinearLayout>(R.id.share_app_line)
         shareApp.setOnClickListener{

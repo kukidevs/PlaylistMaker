@@ -21,9 +21,12 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
+
 class SearchActivity : AppCompatActivity() {
     var inputTextIn = ""
     val baseUrl = "https://itunes.apple.com"
+
+
     private val retrofit = Retrofit.Builder()
         .baseUrl(baseUrl)
         .addConverterFactory(GsonConverterFactory.create())
@@ -39,6 +42,7 @@ class SearchActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search)
+
         val backIcon = findViewById<ImageView>(R.id.iconBack)
         val inputEditText = findViewById<EditText>(R.id.inputEditText)
         val clearButton = findViewById<ImageView>(R.id.clearIcon)
@@ -46,8 +50,14 @@ class SearchActivity : AppCompatActivity() {
         val errorImage = findViewById<ImageView>(R.id.errorImage)
         val errorText = findViewById<TextView>(R.id.errorText)
         val errorButton = findViewById<MaterialButton>(R.id.errorButton)
-
+        val clearHistory = findViewById<MaterialButton>(R.id.clearButton)
+        val previouslySearched = findViewById<TextView>(R.id.previouslySearched)
         val tracksArray = ArrayList<Track>()
+        fun changeVisibility(v: Int){
+            previouslySearched.visibility = v
+            recyclerView.visibility = v
+            clearHistory.visibility = v
+        }
             //arrayListOf(
 //                                                             Track("Smells Like Teen Spirit", "Nirvana", "5:01", "https://is5-ssl.mzstatic.com/image/thumb/Music115/v4/7b/58/c2/7b58c21a-2b51-2bb2-e59a-9bb9b96ad8c3/00602567924166.rgb.jpg/100x100bb.jpg"),
 //                                                             Track("Billie Jean", "Michael Jackson", "4:35", "https://is5-ssl.mzstatic.com/image/thumb/Music125/v4/3d/9d/38/3d9d3811-71f0-3a0e-1ada-3004e56ff852/827969428726.jpg/100x100bb.jpg"),
@@ -56,6 +66,7 @@ class SearchActivity : AppCompatActivity() {
 //                                                             Track("Sweet Child O'Mine", "Guns N' Roses", "5:01", "https://is5-ssl.mzstatic.com/image/thumb/Music125/v4/a0/4d/c4/a04dc484-03cc-02aa-fa82-5334fcb4bc16/18UMGIM24878.rgb.jpg/100x100bb.jpg"))
         val tracksAdapter = TracksAdapter()
         fun makeSearch(){
+            changeVisibility(View.GONE)
             tracksArray.clear()
             tracksAdapter.notifyDataSetChanged()
             iTunesService.search(inputEditText.text.toString()).enqueue(object :
@@ -63,7 +74,6 @@ class SearchActivity : AppCompatActivity() {
                 override fun onResponse(call: Call<iTunesResponse>,
                                         response: Response<iTunesResponse>
                 ) {
-                    println(response.body().toString())
                     if (response.code() == 200) {
                         if(response.body()?.results?.isNotEmpty() == true) {
                             recyclerView.visibility = View.VISIBLE
@@ -86,6 +96,7 @@ class SearchActivity : AppCompatActivity() {
                     errorImage.visibility = View.VISIBLE
                     errorText.visibility = View.VISIBLE
                     errorButton.visibility = View.VISIBLE
+                    errorButton.text = getString(R.string.update_button)
                     errorImage.setImageResource(R.drawable.no_internet)
                     errorText.setText(R.string.no_internet)
                 }
@@ -104,6 +115,27 @@ class SearchActivity : AppCompatActivity() {
             tracksArray.clear()
             tracksAdapter.notifyDataSetChanged()
             inputEditText.hideKeyboard()
+        }
+        inputEditText.setOnFocusChangeListener { view, hasFocus ->
+                val t = App()
+                val history = t.read(getSharedPreferences(PLAYLISTMAKER_SHARED_PREFS, MODE_PRIVATE))
+
+                if (history.isNotEmpty()) {
+                    changeVisibility(View.VISIBLE)
+                    tracksArray.clear()
+                    tracksArray.addAll(history)
+                    tracksAdapter.notifyDataSetChanged()
+                    clearHistory.setOnClickListener {
+                        t.clear(
+                            getSharedPreferences(PLAYLISTMAKER_SHARED_PREFS, MODE_PRIVATE),
+                            SEARCH_HISTORY_KEY
+                        )
+                        tracksArray.clear()
+                        tracksAdapter.notifyDataSetChanged()
+                        changeVisibility(View.GONE)
+                    }
+
+                }
         }
         inputEditText.setOnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_DONE) {
@@ -135,17 +167,16 @@ class SearchActivity : AppCompatActivity() {
                 // empty
             }
         }
+
         inputEditText.addTextChangedListener(simpleTextWatcher)
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        println("saved")
         outState.putString(QUERY_LINE, inputTextIn)
     }
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
-        println("restored")
         super.onRestoreInstanceState(savedInstanceState)
         inputTextIn = savedInstanceState.getString(QUERY_LINE, "")
     }

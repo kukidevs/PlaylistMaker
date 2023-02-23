@@ -14,4 +14,6 @@
     <string name="no_internet">Connection error\n\nLoading failed. Check your internet connection</string>
     <string name="nothing_found">Nothing found</string>
     <string name="update_button">Update</string>
+    <string name="previously_searched">Previously searched</string>
+    <string name="clear_history">Clear history</string>
 </resources>

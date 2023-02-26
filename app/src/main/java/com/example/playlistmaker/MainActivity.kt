@@ -9,6 +9,15 @@ import android.widget.Button
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val sharedPrefs = getSharedPreferences(PLAYLISTMAKER_SHARED_PREFS, MODE_PRIVATE)
+        val restored = sharedPrefs.getBoolean(DARK_MODE_KEY, false)
+
+        if(restored){
+                (applicationContext as App).switchTheme(true)
+        }else{
+                (applicationContext as App).switchTheme(false)
+            }
+
         setContentView(R.layout.activity_main)
         val buttonLib = findViewById<Button>(R.id.library_button_main)
         buttonLib.setOnClickListener {

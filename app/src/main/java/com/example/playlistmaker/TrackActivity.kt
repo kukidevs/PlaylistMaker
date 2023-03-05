@@ -38,6 +38,6 @@ class TrackActivity : AppCompatActivity() {
         trackCountry.text = track.country
         trackAlbum.text = track.collectionName
         trackGenre.text = track.primaryGenreName
-        trackYear.text = track.releaseDate
+        trackYear.text = track.releaseDate.split('-')[0]
     }
 }

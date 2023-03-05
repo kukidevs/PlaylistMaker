@@ -17,4 +17,11 @@
     <string name="update_button">Обновить</string>
     <string name="previously_searched">Вы искали</string>
     <string name="clear_history">Очистить историю</string>
+    <string name="app_version" translatable="false">0.15</string>
+    <string name="song_duration">Длительность</string>
+    <string name="song_album">Альбом</string>
+    <string name="song_year">Год</string>
+    <string name="song_genre">Жанр</string>
+    <string name="song_country">Страна</string>
+    <string name="playing_second" translatable="false">0:00</string>
 </resources>

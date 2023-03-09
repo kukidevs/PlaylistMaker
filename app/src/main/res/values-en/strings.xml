@@ -16,4 +16,9 @@
     <string name="update_button">Update</string>
     <string name="previously_searched">Previously searched</string>
     <string name="clear_history">Clear history</string>
+    <string name="song_duration">Duration</string>
+    <string name="song_album">Album</string>
+    <string name="song_year">Year</string>
+    <string name="song_genre">Genre</string>
+    <string name="song_country">Country</string>
 </resources>

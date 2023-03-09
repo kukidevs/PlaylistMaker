@@ -1,10 +1,9 @@
 package com.example.playlistmaker
 
-import android.content.SharedPreferences
+
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
 
@@ -17,10 +16,15 @@ class TracksAdapter(
     }
 
     override fun onBindViewHolder(holder: TracksViewHolder, position: Int) {
-        holder.bind(tracks[position])
-        holder.itemView.setOnClickListener {
+        val t = tracks[position]
+        holder.bind(t)
+        val activity = holder.itemView
+        activity.setOnClickListener {
             val app = App()
             app.add(tracks[position])
+            //intent.putExtra(listBicycle)[position]
+            activity.context.startActivity(Intent(activity.context, TrackActivity::class.java)
+                .putExtra("track", Gson().toJson(t)))
         }
     }
 

@@ -1,17 +1,20 @@
 package com.example.playlistmaker
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import android.widget.TextView
+import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val sharedPrefs = getSharedPreferences(PLAYLISTMAKER_SHARED_PREFS, MODE_PRIVATE)
         val restored = sharedPrefs.getBoolean(DARK_MODE_KEY, false)
-
         if(restored){
                 (applicationContext as App).switchTheme(true)
         }else{
@@ -19,6 +22,10 @@ class MainActivity : AppCompatActivity() {
             }
 
         setContentView(R.layout.activity_main)
+        val version = findViewById<TextView>(R.id.version)
+        version.setOnClickListener{
+            version.setTextColor(getColor(R.color.white))
+        }
         val buttonLib = findViewById<Button>(R.id.library_button_main)
         buttonLib.setOnClickListener {
             val displayIntent = Intent(this, LibraryActivity::class.java)
